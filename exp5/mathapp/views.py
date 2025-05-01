@@ -1,0 +1,19 @@
+from django.shortcuts import render
+def rectarea(request):
+    context={}
+    context['area']="0"
+    context['l']="0"
+    context['b']="0"
+    if request.method == 'POST':
+        print("POST method is used")
+        l = request.POSt.get('lenght','0')
+        b = request.POST.get('breath','0')
+        print('request=' ,request)
+        print('Lenght=' ,l)
+        print('Breath=' ,b)
+        area = int(l) * int(b)
+        context['area'] = area
+        context['l']=l
+        context['b']=b
+        print('Area=' ,area)
+    return render(request,'mathapp/math.html',context)
